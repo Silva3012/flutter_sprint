@@ -13,8 +13,18 @@ class Quiz extends StatefulWidget {
 
 class _QuizState extends State<Quiz> {
   // Store StartScreen in a variable so that we can conditionally render
-  Widget currentScreen = const StartScreen();
+  // Manage state
+  Widget? currentScreen;
 
+  @override
+  // Initialize state when the state object is created the first time
+  void initState() {
+    currentScreen = StartScreen(changeScreen);
+
+    super.initState();
+  }
+
+  // Update state
   void changeScreen() {
     setState(() {
       currentScreen = const QuestionsScreen();

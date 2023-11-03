@@ -1,19 +1,9 @@
 import 'package:flutter/material.dart';
 
-class StartScreen extends StatefulWidget {
-  const StartScreen({super.key});
+class StartScreen extends StatelessWidget {
+  const StartScreen(this.startQuiz, {super.key});
 
-  @override
-  State<StartScreen> createState() {
-    return _StartScreenState();
-  }
-}
-
-class _StartScreenState extends State<StartScreen> {
-  void startQuiz() {
-    // Set State to start the quiz?
-    print("Start quiz clicked");
-  }
+  final Function() startQuiz;
 
   @override
   Widget build(context) {
