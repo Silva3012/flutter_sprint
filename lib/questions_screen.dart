@@ -4,7 +4,9 @@ import 'package:flutter_sprint/data/questions.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class QuestionsScreen extends StatefulWidget {
-  const QuestionsScreen({super.key});
+  const QuestionsScreen(this.onChosenAnswer, {super.key});
+
+  final void Function(String answer) onChosenAnswer;
 
   @override
   State<QuestionsScreen> createState() {
@@ -17,7 +19,9 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
   var currentQuestionIndex = 0;
 
   // This function will increment the current question index
-  void answerQuestion() {
+  void answerQuestion(String chooseAnswer) {
+    widget.onChosenAnswer(chooseAnswer);
+
     setState(() {
       currentQuestionIndex++;
     });
@@ -46,7 +50,9 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
               height: 30,
             ),
             ...currentQuestion.getShuffledAnswers().map((answer) {
-              return AnswerButton(answer, answerQuestion);
+              return AnswerButton(answer, () {
+                answerQuestion(answer);
+              });
             }),
           ],
         ),
