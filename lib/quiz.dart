@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sprint/data/questions.dart';
 import 'package:flutter_sprint/questions_screen.dart';
+import 'package:flutter_sprint/results_screen.dart';
 import 'package:flutter_sprint/start_screen.dart';
 
 class Quiz extends StatefulWidget {
@@ -42,8 +43,8 @@ class _QuizState extends State<Quiz> {
       setState(() {
         // Reset chosen answers.
         chosenAnswers = [];
-        // We will show resultsScreen here, for now lets just go back to the start screen
-        currentScreen = StartScreen(changeScreen);
+        // Show results screen
+        currentScreen = const ResultsScreen();
       });
     }
   }
