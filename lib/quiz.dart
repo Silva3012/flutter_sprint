@@ -41,8 +41,6 @@ class _QuizState extends State<Quiz> {
 
     if (chosenAnswers.length == questions.length) {
       setState(() {
-        // Reset chosen answers.
-        chosenAnswers = [];
         // Show results screen
         currentScreen = ResultsScreen(chosenAnswers);
       });
