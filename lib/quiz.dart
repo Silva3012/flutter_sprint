@@ -44,7 +44,7 @@ class _QuizState extends State<Quiz> {
         // Reset chosen answers.
         chosenAnswers = [];
         // Show results screen
-        currentScreen = const ResultsScreen();
+        currentScreen = ResultsScreen(chosenAnswers);
       });
     }
   }
