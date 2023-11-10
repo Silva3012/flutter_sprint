@@ -42,9 +42,17 @@ class _QuizState extends State<Quiz> {
     if (chosenAnswers.length == questions.length) {
       setState(() {
         // Show results screen
-        currentScreen = ResultsScreen(chosenAnswers);
+        currentScreen = ResultsScreen(chosenAnswers, restartQuiz);
       });
     }
+  }
+
+  // Restart the quiz
+  void restartQuiz() {
+    setState(() {
+      chosenAnswers = [];
+      currentScreen = StartScreen(changeScreen);
+    });
   }
 
   @override

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sprint/data/questions.dart';
 import 'package:flutter_sprint/quiz_summary.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ResultsScreen extends StatelessWidget {
-  const ResultsScreen(this.selectedAnswers, {super.key});
+  const ResultsScreen(this.selectedAnswers, this.onRestart, {super.key});
 
   final List<String> selectedAnswers;
+  final void Function() onRestart;
 
   // A list (Map) that will hold question, user answer, correct answer
   List<Map<String, Object>> getQuizData() {
@@ -39,7 +41,13 @@ class ResultsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-                "You have answered $numberOfCorrectAnswers of $numberOfTotalQuestions questions correctly..."),
+              "You have answered $numberOfCorrectAnswers of $numberOfTotalQuestions questions correctly!",
+              style: GoogleFonts.roboto(
+                color: const Color.fromARGB(198, 255, 255, 255),
+                fontSize: 19,
+              ),
+              textAlign: TextAlign.center,
+            ),
             const SizedBox(
               height: 30,
             ),
@@ -47,9 +55,11 @@ class ResultsScreen extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            TextButton(
-              onPressed: () {},
-              child: const Text("Restart Quiz"),
+            TextButton.icon(
+              onPressed: onRestart,
+              style: TextButton.styleFrom(foregroundColor: Colors.white),
+              icon: const Icon(Icons.refresh),
+              label: const Text("Restart Quiz"),
             )
           ],
         ),
